@@ -22,7 +22,7 @@ function updateNumber(number){
 
 function updateLinkAnchorTag(anchorSelector){
 	var anchor = $(anchorSelector);
-	var reviewUrl = "https://addons.mozilla.org/{0}/firefox/addon/social-networks-automation/";
+	var reviewUrl = "https://addons.mozilla.org/{0}/firefox/addon/social-networks-automation/#reviews";
 	reviewUrl = reviewUrl.replace("{0}",fullUserLang);
 	anchor.attr("href",urlReview);
 }
