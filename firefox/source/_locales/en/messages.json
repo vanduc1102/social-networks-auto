@@ -1,10 +1,10 @@
 {
 	"appDesc": {
-		"message": "Like all opened posts, comments of Facebook, Google Plus, Twitter, Instagram , Linkedin with only one Click", 
-		"description":"The description of the application, displayed in the web store."
+		"message": "This tool will help you saving time by doing some tasks such as : like, send connection, send message .... on Facebook, GooglePlus, Twitter, Linked, Tumblr, Instagram and more", 
+		"description":"App description"
 	},
 	"appTooltip":{
-		"message":"Like all, Plus all",
+		"message":"Like all",
 		"description":" The tile on browserIcon"
 	},
 	"iconTileFb":{
@@ -16,7 +16,7 @@
 		"description":"Like all opend posts and comments of Google Plus"
 	},
 	"iconTileTw":{
-		"message":"Favorite all",
+		"message":"Like all",
 		"description":"Like all opend posts and comments of Twitter"
 	},
 	"iconTileLike":{
