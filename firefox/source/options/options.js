@@ -1,6 +1,7 @@
-var userLang = navigator.language || navigator.userLanguage;
-userLang = userLang.substring(0,2);
+var fullUserLang = navigator.language || navigator.userLanguage;
+userLang = fullUserLang.substring(0,2);
 //userLang = "vi";
+
 if(!messages[userLang]){
 	userLang = 'en';
 }
@@ -21,8 +22,8 @@ function updateNumber(number){
 
 function updateLinkAnchorTag(anchorSelector){
 	var anchor = $(anchorSelector);
-	var urlReview = anchor.attr("href");
-	urlReview +="?hl="+userLang;
+	var reviewUrl = "https://addons.mozilla.org/{0}/firefox/addon/social-networks-automation/";
+	reviewUrl = reviewUrl.replace("{0}",fullUserLang);
 	anchor.attr("href",urlReview);
 }
 
