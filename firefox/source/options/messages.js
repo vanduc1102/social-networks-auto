@@ -48,29 +48,6 @@ var messages={
 		"msgYoutubeAutoLike":"Auto like youtube",
 		"msgCountNumber":"You have clicked on Like-all button {0} times.",
 		"msgPleaseReview":"Please give me a review"
-	},
-	'fr':{
-		'btnSave':'Enregistrer',
-		'btnSubmitPayPal':'Envoyer {} canettes avec Paypal',
-		'msgPostFb':'poste',
-		'msgPostGl':'poste',
-		'msgComment':'commentaire',
-		'msgFavorite':'Ajouter aux favoris tous les',
-		'msgBoth':'les deux',
-		'msgSecond':'secondes',
-		'msgChooseOption':'Choisissez options',
-		'msgSupsponsor':'Donne-moi quelques Coca-Cola',
-		'msgAddicts':'Je suis un accros de Coca-Cola',
-		'msgReason':'Si vous aimez l\'extension, vous pouvez me donner quelques canettes.',
-		'msgLike':'J\'aime',
-		'msgEach':'chaque',
-		'msgAmount':'Montant',
-		'msgSavedSuccessfully':'Enregistré avec succès',
-		"msgAutoScrollTitle":"La page de défilement automatique",
-		"msgTime":"fois",
-		"msgAll":"Tous",
-		"msgYoutubeAutoLike":"Comme youtube vidéo automatiquement",
-		"msgYoutube":"Youtube"
 	}
 
 };

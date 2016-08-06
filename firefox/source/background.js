@@ -1,35 +1,8 @@
-//The main function.
-// chrome.browserAction.setBadgeText({text:String(10)});
-LOGGER("Background is running");
+LOGGER("Start : Social Networks Auto background " + new Date());
 var urls = ['plus.google.com', '.facebook.com', 'twitter.com','instagram.com','linkedin.com','tumblr.com'];
 var youtubeURL = "www.youtube.com/watch";
-function setBadgeNumber(tab, count) {
-	if (checkEnable(tab.url)) {
-		if (count > 99) {
-			setBadgeText(tab, '99+');
-		} else if (count == 0) {
-			setBadgeText(tab, '');
-		} else {
-			setBadgeText(tab, String(count));
-		}
-	}
-};
-function setBadgeText(tab, text){
-	chrome.browserAction.setBadgeText({
-		text : text,
-		'tabId' : tab.id
-	});
-}
-function checkEnable(url) {
-	for (idx in urls) {
-		if (url.indexOf(urls[idx]) > 0) {
-			return true;
-		}
-	}
-	return false;
-};
-
 var count = 0;
+
 chrome.browserAction.onClicked.addListener(function(tab) {
 	try {
 		chrome.tabs.executeScript(null, {
@@ -63,7 +36,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 	LOGGER('chrome.tabs.onUpdated.addListener tab.id ' + tab.id + ' ; tab.url ' + tab.url);
 	try {
 		if (checkEnable(tab.url)) {
-			enableButtonIfNoneText(tab);		
+			enableButtonAndSetText(tab);		
 		} else {
 			disableButton(tab);
 		}
@@ -74,26 +47,6 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 	}
 
 	likeYoutubeVideo(tab.url);
-});
-chrome.runtime.onInstalled.addListener(function(details) {
-	LOGGER("on Installed");
-	chrome.storage.sync.get({
-		isOptionOpened : "false"
-	}, function(cfgData) {
-		LOGGER("Option is not opened yet!" + JSON.stringify(cfgData));
-		if (cfgData["isOptionOpened"] == "false") {
-			LOGGER("Option tab is openning");
-			chrome.tabs.create({
-				url : "options.html"
-			}); 
-		}
-	});
-	
-	chrome.storage.sync.set({
-		"isOptionOpened" : "true"
-	}, function() {
-		LOGGER("Option is openned, Dont open it again.");
-	});
 });
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
@@ -111,14 +64,35 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	}
 });
 
-function enableButtonIfNoneText(tab){
-	chrome.browserAction.getBadgeText({"tabId" : tab.id}, function (text){
-		LOGGER("enableButtonIfNoneText : "+text);
-		if(text == ''){
-			enableButton(tab);
-			setBadgeText(tab, getDefaultText(tab));
+function setBadgeNumber(tab, count) {
+	if (checkEnable(tab.url)) {
+		if (count > 99) {
+			setBadgeText(tab, '99+');
+		} else if (count == 0) {
+			setBadgeText(tab, '');
+		} else {
+			setBadgeText(tab, String(count));
 		}
+	}
+};
+function setBadgeText(tab, text){
+	chrome.browserAction.setBadgeText({
+		text : text,
+		'tabId' : tab.id
 	});
+}
+function checkEnable(url) {
+	for (idx in urls) {
+		if (url.indexOf(urls[idx]) > 0) {
+			return true;
+		}
+	}
+	return false;
+};
+
+function enableButtonAndSetText(tab){
+	enableButton(tab);
+	setBadgeText(tab, getDefaultText(tab));
 }
 function enableButton(tab){
 	chrome.browserAction.enable(tab.id);
@@ -150,7 +124,7 @@ function isConnect(currentUrl){
 	return url != undefined;
 }
 function likeYoutubeVideo(url) {
-	chrome.storage.sync.get({
+	chrome.storage.local.get({
 		"youtube_like" : "false"
 	}, function(cfgData) {
 		LOGGER(cfgData);
@@ -171,7 +145,7 @@ function likeYoutubeVideo(url) {
 					console.log(' Exception on chrome.browserAction.onClicked');
 				}
 			} else {
-				LOGGER("You are in youtube, but not waching page");
+				LOGGER("You are not in Youtube watching page");
 			}
 		}
 	});
@@ -180,7 +154,7 @@ function likeYoutubeVideo(url) {
 function setStorageNumber(key,number,callback){
 	var object = {};
 	object[key] = number;
-	chrome.storage.sync.set(object, function() {
+	chrome.storage.local.set(object, function() {
 		if(callback){
 			callback();
 		}
@@ -189,7 +163,7 @@ function setStorageNumber(key,number,callback){
 function getStorageNumber(key,callback){
 	var object = {};
 	object[key] = 0;
-	chrome.storage.sync.get(object, function(item) {
+	chrome.storage.local.get(object, function(item) {
 			if(callback){
 				callback(item[key]);
 			}else{
@@ -197,3 +171,4 @@ function getStorageNumber(key,callback){
 			}
 		});
 }
+LOGGER("Finish : Social Networks Auto background " + new Date());

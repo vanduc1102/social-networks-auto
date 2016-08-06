@@ -42,7 +42,7 @@ function updateLinkAnchorTag(anchorSelector){
 			youtubeCheck = document.querySelector('.youtube-like:checked').value;			
 		}
 		LOGGER(youtubeCheck);
-		chrome.storage.sync.set({
+		chrome.storage.local.set({
 			"google": google,
 			"google_time":google_time,
 			"facebook": facebook,
@@ -63,7 +63,7 @@ function updateLinkAnchorTag(anchorSelector){
 	// Restores select box and checkbox state using the preferences
 	// stored in chrome.storage.
 	document.addEventListener('DOMContentLoaded', function restore_options() {
-		chrome.storage.sync.get({
+		chrome.storage.local.get({
 			"google": "post",
 			"google_time": 1,
 			"facebook": "post",

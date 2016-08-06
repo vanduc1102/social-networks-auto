@@ -1,27 +1,36 @@
 {
-  "name": "Like all, plus all, favorite all",
-  "short_name": "FB like all",
-  "description": "__MSG_appDesc__",
-  "version": "1.1.14",
-  "background": {
-    "scripts": ["scripts/logger.js","background.js"],
-	  "persistent": false
-  },
-  "permissions": [
-      "storage",
-      "tabs", 
-      "*://*/*"
-  ],
-  "browser_action": {
-		"default_title": "__MSG_appTooltip__",
-		"default_icon": "assets/icon-give-flower-100.png"
-  },
-  "icons": { 
-	"16": "assets/icon-give-flower-100.png",
-    "48": "assets/icon-give-flower-100.png",
-    "128":"assets/icon-give-flower-100.png" 
-  },
-  "options_page": "options.html",
-  "default_locale": "en",
-  "manifest_version": 2
+    "applications": {
+        "gecko": {
+            "id": "social-networks-automation@mozilla.org",
+            "strict_min_version": "42.*"
+        }
+    },
+    "name": "Social Networks Automation",
+    "short_name": "Social Automation",
+    "description": "__MSG_appDesc__",
+    "version": "0.0.1",
+    "background": {
+        "scripts": ["scripts/logger.js", "background.js"],
+        "persistent": false
+    },
+    "permissions": [
+        "storage",
+        "tabs",
+        "*://*/*"
+    ],
+    "browser_action": {
+        "default_title": "__MSG_appTooltip__",
+        "default_icon": "assets/icon-give-flower-100.png"
+    },
+    "icons": {
+        "16": "assets/icon-give-flower-100.png",
+        "48": "assets/icon-give-flower-100.png",
+        "128": "assets/icon-give-flower-100.png"
+    },
+    "options_ui": {
+        "page": "options.html"
+    },
+    "homepage_url": "http://social-networks-automation.blogspot.com/",
+    "default_locale": "en",
+    "manifest_version": 2
 }

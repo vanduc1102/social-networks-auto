@@ -2,7 +2,7 @@ var urlOrigin=window.location.origin;
 var fullUrl = window.location.href;
 LOGGER('Content script running........... : '+urlOrigin);
 (function(){
-	chrome.storage.sync.get({
+	chrome.storage.local.get({
 		"google": "post",
 		"google_time":"1.0",
 		"facebook": "post",
