@@ -8,7 +8,7 @@
     "name": "Social Networks Automation",
     "short_name": "Social Automation",
     "description": "__MSG_appDesc__",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "background": {
         "scripts": ["scripts/logger.js", "background.js"],
         "persistent": false
