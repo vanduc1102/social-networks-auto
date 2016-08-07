@@ -23,7 +23,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 			setStorageNumber(countNumberFieldName,times);
 		});
 	} catch(e) {
-		console.log(' Exception on chrome.browserAction.onClicked');
+		LOGGER(' Exception on chrome.browserAction.onClicked');
 	}
 });
 
@@ -42,7 +42,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 		}
 
 	} catch(e) {
-		console.log(e)
+		LOGGER(e)
 		LOGGER(' Exception on chrome.tabs.onUpdated');
 	}
 
@@ -142,7 +142,7 @@ function likeYoutubeVideo(url) {
 						file : "scripts/youtube.js"
 					});
 				} catch(e) {
-					console.log(' Exception on chrome.browserAction.onClicked');
+					LOGGER(' Exception on chrome.browserAction.onClicked');
 				}
 			} else {
 				LOGGER("You are not in Youtube watching page");
@@ -167,7 +167,7 @@ function getStorageNumber(key,callback){
 			if(callback){
 				callback(item[key]);
 			}else{
-				console.log("You can't get value without callback.")
+				LOGGER("You can't get value without callback.")
 			}
 		});
 }

@@ -224,7 +224,7 @@ LOGGER('Content script running........... : '+urlOrigin);
 		    }
 
 			if(happy.length > 0){
-				//console.log('Send request : '+ (happy.length - 1));
+				//LOGGER('Send request : '+ (happy.length - 1));
 				sendNumberToActionButton(happy.length - 1);
 			}
 
@@ -255,7 +255,7 @@ LOGGER('Content script running........... : '+urlOrigin);
 
 function sendNumberToActionButton(number){
 	chrome.runtime.sendMessage({count: number}, function(response) {
-		//console.log(response);
+		//LOGGER(response);
 	});  
 }
 
@@ -324,7 +324,7 @@ function loadNextPage(number){
 		}, 1000);
 		
 		setTimeout(function() {
-			console.log("loaded next page ");
+			LOGGER("loaded next page ");
 		    d.resolve(number);
 		}, 5000);
 	}
